@@ -1,0 +1,12 @@
+{
+    "name": "puranik/sports-arena",
+    "description": "\"Web app for handlings bookings and cancellation of Sports Arena game courts\"",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Prashanth Puranik",
+            "email": "puranik.digdeeper.in"
+        }
+    ],
+    "require": {}
+}
