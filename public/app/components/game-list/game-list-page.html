@@ -1,0 +1,15 @@
+<div class="container page page-game-list">
+    <div class="row">
+        <div ng-repeat="game in $ctrl.games" class="col-sm-4 col-md-3">
+            <div class="thumbnail game-thumbnail" ng-click="$ctrl.bookOrCancelGame(game)">
+                <div class="text-center "><h3>{{game.name}}</h3></div>
+                <div class="caption text-center">
+                    <h4>{{game.arenas.length}} {{$ctrl.getDescription(game)}}</h4>
+                    <div class="thumbnail-action-hint">
+                        Book or cancel a slot
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

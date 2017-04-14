@@ -1,0 +1,145 @@
+<div class="container page page-game-booking">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs arena-tabs" role="tablist">
+        <li role="presentation" ng-repeat="arena in $ctrl.game.arenas" class="cursor-pointer" ng-class="{active: $index === 0}">
+            <a show-tab data-target="#{{$ctrl.game.slug}}-{{arena.arenaId}}" aria-controls="home" role="tab" data-toggle="tab" ng-click="$ctrl.selectedArena = $ctrl.game.arenas[$index]">{{arena.description}}</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content arena-tab-content">
+        <div role="tabpanel" class="tab-pane" id="{{$ctrl.game.slug}}-{{arena.arenaId}}" ng-repeat="arena in $ctrl.game.arenas" ng-class="{active: $index === 0}">
+            <div class="row">
+                <div class="col-md-6" style="margin-bottom: 40px;">
+                    <div class="booking-step alert alert-info" role="alert">
+                        <span class="booking-step-number">1</span>
+                        Select the date for which you wish to book/cancel a slot
+                    </div>
+                    <div class="booking-datetimepicker-container">
+                        <div class="form-group">
+                            <div id="datetimepicker-{{$index}}" class="datetimepicker-container"></div>    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" style="margin-bottom: 40px;">
+                    <div class="booking-step alert alert-info" role="alert">
+                        <span class="booking-step-number">2</span>
+                        Book/cancel the slot
+                    </div>
+                    <div class="booking-slot-selector">
+                        <div class="booking-slot-selector-date-display">
+                            <h4>Slots for {{$ctrl.selectedDate}}</h4>
+                        </div>
+                        <div class="booking-slot-selector-inner">
+                            <hr class="booking-slot-list-item-divider" style="margin-top: 6px;" />
+                            <ul class="booking-slot-list">
+                                <li ng-repeat="slot in $ctrl.slots" class="booking-slot-list-item">
+                                    <div class="booking-slot-list-item-content">
+                                        <span class="pull-left">
+                                            <i class="glyphicon glyphicon-time"></i>
+                                            {{slot.startTime}} - {{slot.endTime}}
+                                        </span>
+                                        <span class="pull-right">
+                                            <a data-target="#slot-cancellation-dialog" data-toggle="modal" class="btn btn-sm btn-danger" data-slot="{{slot.startTime}}" ng-click="$ctrl.selectedSlot = slot">Cancel</a>
+                                            <a data-target="#slot-booking-dialog" data-toggle="modal" class="btn btn-sm btn-primary" data-slot="{{slot.startTime}}" ng-click="$ctrl.selectedSlot = slot">Book</a>
+                                        </span>
+                                    </div>
+                                    <hr class="booking-slot-list-item-divider"/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="slot-booking-dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title text-uppercase">Review and confirm booking</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="spacing-top-bottom-base">
+                        <h4>{{$ctrl.selectedArena.description}}</h4>
+                    </div>
+                    <div class="spacing-top-bottom-base">
+                        Please review and confirm that you would like to book the following slot.
+                    </div>
+                    <div class="spacing-top-bottom-base">
+                        <span class="selected-date">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                            {{$ctrl.selectedDate}}
+                        </span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="selected-slot">
+                            <i class="glyphicon glyphicon-time"></i>
+                            {{$ctrl.selectedSlot.startTime}} - {{$ctrl.selectedSlot.endTime}}
+                        </span>
+                    </div>
+                    <div class="spacing-top-bottom-base">
+                        <div class="form-group">
+                            <label for="requestor-name" class="control-label">Name</label>
+                            <input type="text" class="form-control" id="requestor-name" name="requestor-name" placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="requestor-empid" class="control-label">Employee id</label>
+                            <input type="text" class="form-control" id="requestor-empid" name="requestor-empid" placeholder="Your employee id">
+                        </div>
+                        <div class="form-group">
+                            <label for="requestor-phone-number" class="control-label">Phone number</label>
+                            <input type="tel" class="form-control" id="requestor-phone-number" name="requestor-phone-number" placeholder="Your mobile phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="requestor-emailid" class="control-label">Email id</label>
+                            <input type="email" class="form-control" id="requestor-emailid" placeholder="Your registered email id">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default text-uppercase" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-sm btn-primary text-uppercase">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="slot-cancellation-dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title text-uppercase">Review and confirm cancellation</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="spacing-top-bottom-base">
+                        <h4>{{$ctrl.selectedArena.description}}</h4>
+                    </div>
+                    <div class="spacing-top-bottom-base">
+                        Please review and confirm that you would like to cancel the following slot. On your confirmation, we shall send an email to your registered email account. You will need to open a link sent in the email to complete cancellation.
+                    </div>
+                    <div class="spacing-top-bottom-base">
+                        <strong>Note</strong>: The slot will not be cancelled till the time you open the link sent.
+                    </div>
+                    <div class="spacing-top-bottom-base">
+                        <span class="selected-date">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                            {{$ctrl.selectedDate}}
+                        </span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="selected-slot">
+                            <i class="glyphicon glyphicon-time"></i>
+                            {{$ctrl.selectedSlot.startTime}} - {{$ctrl.selectedSlot.endTime}}
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default text-uppercase" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-sm btn-danger text-uppercase">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

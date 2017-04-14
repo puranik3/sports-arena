@@ -1,0 +1,234 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.spacing-top-bottom-base {
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.page-container-inner {
+    position: relative;
+    z-index: 3;
+}
+
+.page-background-image-container {
+    display: none;
+}
+
+@media all and (min-width: 640px) {
+    .page-background-image-container {
+        display: initial;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+    }
+
+    .page-background-image {
+        width: 100%;
+    }
+
+    .page-background-image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /*background-color: rgba(224, 224, 224, 0.6);*/
+        background-color: rgba(64, 64, 64, 0.6);
+        z-index: 2;
+    }
+}
+
+.page {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+.navbar-brand .logo-container {
+    display: inline-block;
+    height: 50px;
+}
+
+.navbar-brand .logo {
+    height: 100%;
+}
+
+#site-footer {
+    padding-bottom: 20px;
+}
+
+@media screen and (min-width:640px) {
+    #site-footer {
+        color: white;
+    }
+}
+
+.page-game-list .game-thumbnail {
+    position: relative;
+    padding-bottom: 30px;
+    background-color: lightgoldenrodyellow;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.15s;
+}
+
+.page-game-list .game-thumbnail:hover {
+    background-color: gold;
+    box-shadow: 0 0 2px 1px rgba(220,220,220,0.4);
+    transform: scale(1.05, 1.05);
+}
+
+.page-game-list .game-thumbnail .thumbnail-action-hint {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    line-height: 40px;
+    background-color: rgba(32, 32, 32, 0.8);
+    color: white;
+}
+
+.page-game-list .game-thumbnail:hover .thumbnail-action-hint {
+    display: initial;
+}
+
+.page-game-booking .arena-tabs li a {
+    background-color: rgba(255,255,255,0.2);
+    color: lightgray;
+}
+
+.page-game-booking .arena-tabs li.active a {
+    background-color: rgba(255,255,255,0.5);
+    color: black;
+}
+
+.page-game-booking .arena-tab-content {
+    padding: 30px;
+    background: rgba(255,255,255,0.5);
+}
+
+/*
+.page-game-booking .arena-tabs > li.selected > a {
+    background: rgba(255,255,255,0.5);
+}
+
+.page-game-booking .arena-tabs > li.selected > a {
+    background: rgba(255,255,255,1);
+}
+*/
+.page-game-booking .booking-step {
+    line-height: 36px;
+    vertical-align: middle;
+}
+
+.page-game-booking .booking-step-number {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 28px;
+    border: 2px solid #9acfea;
+    border-radius: 50%;
+    margin-right: 10px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #444;
+    color: white;
+}
+
+.page-game-booking .booking-datetimepicker-container, .page-game-booking .booking-slot-selector {
+    height: 300px;
+    padding: 10px;
+    overflow: auto;
+    border: 1px solid #9acfea;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px 1px #444;
+    /*background-image: linear-gradient(to bottom, rgba(217, 237, 247, 0.9) 0,rgba(189, 222, 240, 0.9) 100%);*/
+    background-color: rgba(224, 224, 224, 0.8);
+
+}
+
+.page-game-booking .booking-datetimepicker-container {
+    overflow: hidden;
+}
+
+.page-game-booking .picker-switch.accordion-toggle {
+    display: none;
+}
+
+.page-game-booking .booking-slot-selector-date-display {
+    padding: 16px 20px;
+    color: #333;
+}
+
+.page-game-booking .booking-slot-selector-date-display h4 {
+    margin: 0;
+}
+
+.page-game-booking .booking-slot-selector-inner {
+    height: 220px;
+    padding: 0 20px;
+    overflow: auto;
+}
+
+.page-game-booking .booking-slot-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-game-booking .booking-slot-list-item-content {
+    padding-bottom: 20px;
+}
+
+.page-game-booking .booking-slot-list-item-content .glyphicon-time {
+    margin-right: 10px;
+}
+
+.page-game-booking .booking-slot-list-item-divider {
+    clear: both;
+    margin-bottom: 10px;
+    border-color: #337ab7;
+}
+
+.page-game-booking #slot-booking-dialog .modal-header {
+    background-color: #337ab7;
+    color: white;
+}
+
+.page-game-booking #slot-booking-dialog .glyphicon {
+    color: #337ab7;
+    margin-right: 10px;
+}
+
+.page-game-booking #slot-cancellation-dialog .modal-header {
+    background-color: #d43f3a;
+    color: white;
+}
+
+.page-game-booking #slot-cancellation-dialog .glyphicon {
+    color: #d43f3a;
+    margin-right: 10px;
+}
